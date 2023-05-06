@@ -20,18 +20,19 @@ function urlify(str: string, length: number): string {
 }
 
 type testCase = {
-    input: { str: string, length: number },
+    str: string,
+    length: number,
     expectedResult: string,
 }
 
 const testCases: Array<testCase> = [
-    {input: {str: "a b  ", length: 3}, expectedResult: "a%20b"},
-    {input: {str: "Mr John Smith    ", length: 13}, expectedResult: "Mr%20John%20Smith"},
-    {input: {str: "a  d    ", length: 4}, expectedResult: "a%20%20d"},
+    {str: "a b  ", length: 3, expectedResult: "a%20b"},
+    {str: "Mr John Smith    ", length: 13, expectedResult: "Mr%20John%20Smith"},
+    {str: "a  d    ", length: 4, expectedResult: "a%20%20d"},
 ]
 
 testCases.forEach((tc, i) => {
-    const result = urlify(tc.input.str, tc.input.length)
+    const result = urlify(tc.str, tc.length)
     if (result === tc.expectedResult) {
         console.debug(`✅ Test ${i}`)
     } else {
