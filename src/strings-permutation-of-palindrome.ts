@@ -43,7 +43,7 @@ const testCases: Array<testCase> = [
 testCases.forEach((tc, i) => {
     const result = permutationOfPalindrome(tc.str)
     if (result === tc.expectedResult) {
-        console.debug(`✅ Test ${i}: input %O`, tc)
+        console.info(`✅ Test ${i}: input %O`, tc)
     } else {
         console.error(`❌ Test ${i}: input %O actual %O`, tc, result)
     }

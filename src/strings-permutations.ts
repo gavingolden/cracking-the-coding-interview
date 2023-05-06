@@ -41,8 +41,8 @@ const testCases: Array<testCase> = [
 testCases.forEach((tc, i) => {
     const result = arePermutations(tc.s1, tc.s2)
     if (result === tc.expectedResult) {
-        console.debug(`✅ Test ${i}: "${tc.s1}" and "${tc.s2}"`)
+        console.info(`✅ Test ${i}: input %O`, tc)
     } else {
-        console.error(`❌ Test ${i}: "${tc.s1}" and "${tc.s2}" failed. Expected "${tc.expectedResult}" but got "${result}"`)
+        console.error(`❌ Test ${i}: input %O actual %O`, tc, result)
     }
 })
