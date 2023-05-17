@@ -1,4 +1,7 @@
-import {rotateMatrix} from "./strings-rotate-matrix";
+function rotateMatrix(input: number[][]): number[][] {
+    // TODO
+    return []
+}
 
 type testCase = {
     input: number[][],

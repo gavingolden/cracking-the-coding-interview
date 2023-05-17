@@ -1,4 +1,18 @@
-import {removeDupes} from "./lists-remove-dupes-suboptimal";
+
+// O(n) time
+// O(n) space
+function removeDupes(input: number[]): number[] {
+    const set = new Set<number>()
+    const result = new Array<number>()
+    input.forEach((e) => {
+        if(set.has(e)) {
+            return
+        }
+        result.push(e)
+        set.add(e)
+    })
+    return result
+}
 
 type testCase = {
     input: number[],

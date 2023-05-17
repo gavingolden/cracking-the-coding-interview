@@ -31,11 +31,11 @@ const testCases: Array<testCase> = [
     {str: "a  d    ", length: 4, expectedResult: "a%20%20d"},
 ]
 
-testCases.forEach((tc, i) => {
-    const result = urlify(tc.str, tc.length)
-    if (result === tc.expectedResult) {
-        console.info(`✅ Test ${i}: input %O`, tc)
-    } else {
-        console.error(`❌ Test ${i}: input %O actual %O`, tc, result)
-    }
+describe(urlify, () => {
+    testCases.forEach((tc) => {
+        it('should equal', () => {
+            const result = urlify(tc.str, tc.length)
+            expect(result).toEqual(tc.expectedResult)
+        })
+    })
 })
