@@ -20,22 +20,20 @@ function compression(input: string): string {
     return result.length < input.length ? result : input
 }
 
-
-type testCase = {
-    input: string,
-    expectedResult: string,
-}
-
-const testCases: Array<testCase> = [
-    {input: 'aabcccccaaa', expectedResult: 'a2b1c5a3'},
-    {input: 'a', expectedResult: 'a'},
-    {input: '', expectedResult: ''},
-    {input: 'abc', expectedResult: 'abc'},
-    {input: 'aa', expectedResult: 'aa'},
-    {input: 'abbcccdddd', expectedResult: 'a1b2c3d4'},
-]
-
 describe(compression, () => {
+    type testCase = {
+        input: string,
+        expectedResult: string,
+    }
+
+    const testCases: Array<testCase> = [
+        {input: 'aabcccccaaa', expectedResult: 'a2b1c5a3'},
+        {input: 'a', expectedResult: 'a'},
+        {input: '', expectedResult: ''},
+        {input: 'abc', expectedResult: 'abc'},
+        {input: 'aa', expectedResult: 'aa'},
+        {input: 'abbcccdddd', expectedResult: 'a1b2c3d4'},
+    ]
     testCases.forEach((tc) => {
         it('should equal', () => {
             const result = compression(tc.input)

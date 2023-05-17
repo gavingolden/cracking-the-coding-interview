@@ -19,19 +19,18 @@ function urlify(str: string, length: number): string {
     return output.join("")
 }
 
-type testCase = {
-    str: string,
-    length: number,
-    expectedResult: string,
-}
-
-const testCases: Array<testCase> = [
-    {str: "a b  ", length: 3, expectedResult: "a%20b"},
-    {str: "Mr John Smith    ", length: 13, expectedResult: "Mr%20John%20Smith"},
-    {str: "a  d    ", length: 4, expectedResult: "a%20%20d"},
-]
-
 describe(urlify, () => {
+    type testCase = {
+        str: string,
+        length: number,
+        expectedResult: string,
+    }
+
+    const testCases: Array<testCase> = [
+        {str: "a b  ", length: 3, expectedResult: "a%20b"},
+        {str: "Mr John Smith    ", length: 13, expectedResult: "Mr%20John%20Smith"},
+        {str: "a  d    ", length: 4, expectedResult: "a%20%20d"},
+    ]
     testCases.forEach((tc) => {
         it('should equal', () => {
             const result = urlify(tc.str, tc.length)
