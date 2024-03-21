@@ -20,17 +20,17 @@ describe('deleteMiddleNode', () => {
 
     const testCases: Array<testCase> = [
             {
-                startingList: new LinkedList<number>().append(0).append(1).append(2).append(3),
+                startingList: new LinkedList<number>([0, 1, 2, 3]),
                 nodeSelector: (list) => list.head?.next!,
                 expectedResult: [0, 2, 3],
             },
             {
-                startingList: new LinkedList<number>().append(0).append(1).append(2).append(3),
+                startingList: new LinkedList<number>([0, 1, 2, 3]),
                 nodeSelector: (list) => list.head?.next?.next!,
                 expectedResult: [0, 1, 3],
             },
             {
-                startingList: new LinkedList<number>().append(0).append(1).append(2).append(3),
+                startingList: new LinkedList<number>([0, 1, 2, 3]),
                 nodeSelector: (list) => list.head?.next?.next?.next!,
                 expectError: true,
             },

@@ -45,7 +45,7 @@ describe('partition', () => {
 
     const testCases: Array<testCase> = [
             {
-                input: new LinkedList<any>().append(10).append(8).append(6).append(4),
+                input: new LinkedList<any>([10, 8, 6, 4]),
                 partition: 7,
                 expectedResult: [6, 4, 10, 8]
             },
@@ -55,17 +55,17 @@ describe('partition', () => {
                 expectedResult: []
             },
             {
-                input: new LinkedList<any>().append(10),
+                input: new LinkedList<any>([10]),
                 partition: 7,
                 expectedResult: [10]
             },
             {
-                input: new LinkedList<any>().append(10).append(8).append(6).append(4),
+                input: new LinkedList<any>([10, 8, 6, 4]),
                 partition: 11,
                 expectedResult: [10, 8, 6, 4]
             },
             {
-                input: new LinkedList<any>().append(10).append(8).append(6).append(4),
+                input: new LinkedList<any>([10, 8, 6, 4]),
                 partition: 1,
                 expectedResult: [10, 8, 6, 4]
             }

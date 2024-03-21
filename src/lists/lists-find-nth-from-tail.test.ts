@@ -37,31 +37,31 @@ describe('findNthLast', () => {
 
     const testCases: Array<testCase> = [
             {
-                input: new LinkedList<number>().append(0).append(1).append(2),
+                input: new LinkedList<number>([0, 1, 2]),
                 n: 0,
                 expectedResult: 2,
                 expectError: false
             },
             {
-                input: new LinkedList<number>().append(0).append(1).append(2),
+                input: new LinkedList<number>([0, 1, 2]),
                 n: 1,
                 expectedResult: 1,
                 expectError: false
             },
             {
-                input: new LinkedList<number>().append(0).append(1).append(2),
+                input: new LinkedList<number>([0, 1, 2]),
                 n: 2,
                 expectedResult: 0,
                 expectError: false
             },
             {
-                input: new LinkedList<number>().append(0).append(1).append(2),
+                input: new LinkedList<number>([0, 1, 2]),
                 n: 3,
                 expectedResult: undefined,
                 expectError: true
             },
             {
-                input: new LinkedList<number>().append(0).append(1).append(2),
+                input: new LinkedList<number>([0, 1, 2]),
                 n: -1,
                 expectedResult: undefined,
                 expectError: true

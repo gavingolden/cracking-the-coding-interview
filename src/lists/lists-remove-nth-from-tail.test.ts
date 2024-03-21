@@ -47,24 +47,24 @@ describe('removeNthFromTail', () => {
 
     const testCases: Array<testCase> = [
             {
-                input: new LinkedList<number>().append(0).append(1).append(2),
+                input: new LinkedList<number>([0, 1, 2]),
                 n: 0,
                 expectedResult: [0, 1],
             },
             {
-                input: new LinkedList<number>().append(0).append(1).append(2),
+                input: new LinkedList<number>([0, 1, 2]),
                 n: 1,
                 expectedResult: [0, 2],
             },
             {
-                input: new LinkedList<number>().append(0).append(1).append(2),
+                input: new LinkedList<number>([0, 1, 2]),
                 n: 2,
                 expectedResult: [1, 2],
             },
-            {input: new LinkedList<number>().append(0), n: 0, expectedResult: []},
+            {input: new LinkedList<number>([0]), n: 0, expectedResult: []},
             {input: new LinkedList<number>(), n: 0, expectError: true},
-            {input: new LinkedList<number>().append(0), n: 1, expectError: true},
-            {input: new LinkedList<number>().append(0), n: -1, expectError: true},
+            {input: new LinkedList<number>([0]), n: 1, expectError: true},
+            {input: new LinkedList<number>([0]), n: -1, expectError: true},
         ]
     ;[removeNthLast].forEach((fn) => {
         describe(fn, () => {
