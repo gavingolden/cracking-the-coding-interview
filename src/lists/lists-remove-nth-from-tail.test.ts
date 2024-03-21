@@ -11,30 +11,29 @@ function removeNthLast<T>(list: LinkedList<T>, n: number): LinkedList<T> {
         throw new Error(`can't remove node ${n} from tail of list with length ${list.length}`)
     }
     if (n == list.length - 1) {
-        // remove head
+        //  We're removing head node
         list.head = list.head?.next
         list.length--
         return list
     }
+    if (!list.head) {
+        throw new Error("unexpected missing head node")
+    }
+    let target: LinkedListNode<T> = list.head
+    let runner: LinkedListNode<T> = list.head
 
-    let beforeTarget: LinkedListNode<T> | undefined = list.head
-    let lead: LinkedListNode<T> | undefined = list.head
-    while (n >= 0 && lead != undefined) {
-        lead = lead.next
-        n--
+    // look for node in front of node N because we need to change that nodes `next`
+    const targetN = n + 1
+
+    for (let i = 0; i < targetN; i++) {
+        runner = runner.next!
     }
-    while (lead?.next != undefined) {
-        beforeTarget = beforeTarget?.next
-        lead = lead.next
+    while (runner.next) {
+        runner = runner.next
+        target = target.next!
     }
-    if (beforeTarget == undefined) {
-        throw new Error("invalid state: predecessor node should not be missing")
-    }
-    beforeTarget.next = beforeTarget.next?.next
-    list.length--
-    if (beforeTarget.next == undefined) {
-        list.tail = beforeTarget
-    }
+    // target.next is node N that we want to remove
+    target.next = target.next?.next
     return list
 }
 
