@@ -3,14 +3,14 @@ import {LinkedList, LinkedListNode} from "./linked-list";
 /**
  * Removes nth node from the tail. Zero is the last node (the tail), 1 is the node before the tail, etc
  */
-function removeNthLast<T>(list: LinkedList<T>, count: number): LinkedList<T> {
-    if (count < 0) {
+function removeNthLast<T>(list: LinkedList<T>, n: number): LinkedList<T> {
+    if (n < 0) {
         throw new Error("count must be greater than zero")
     }
-    if (count >= list.length) {
-        throw new Error(`can't remove node ${count} from tail of list with length ${list.length}`)
+    if (n >= list.length) {
+        throw new Error(`can't remove node ${n} from tail of list with length ${list.length}`)
     }
-    if (count == list.length - 1) {
+    if (n == list.length - 1) {
         // remove head
         list.head = list.head?.next
         list.length--
@@ -19,9 +19,9 @@ function removeNthLast<T>(list: LinkedList<T>, count: number): LinkedList<T> {
 
     let beforeTarget: LinkedListNode<T> | undefined = list.head
     let lead: LinkedListNode<T> | undefined = list.head
-    while (count >= 0 && lead != undefined) {
+    while (n >= 0 && lead != undefined) {
         lead = lead.next
-        count--
+        n--
     }
     while (lead?.next != undefined) {
         beforeTarget = beforeTarget?.next
@@ -39,45 +39,43 @@ function removeNthLast<T>(list: LinkedList<T>, count: number): LinkedList<T> {
 }
 
 describe('removeNthFromTail', () => {
-    type testCase = {
+    type testCase = Partial<{
         input: LinkedList<any>,
-        remove: number,
+        n: number,
         expectedResult: any[] | undefined,
         expectError: boolean,
-    }
+    }>
 
     const testCases: Array<testCase> = [
             {
                 input: new LinkedList<number>().append(0).append(1).append(2),
-                remove: 0,
+                n: 0,
                 expectedResult: [0, 1],
-                expectError: false
             },
             {
                 input: new LinkedList<number>().append(0).append(1).append(2),
-                remove: 1,
+                n: 1,
                 expectedResult: [0, 2],
-                expectError: false
             },
-        {
-            input: new LinkedList<number>().append(0).append(1).append(2),
-            remove: 2,
-            expectedResult: [1, 2],
-            expectError: false
-        },
-        {input: new LinkedList<number>().append(0), remove: 0, expectedResult: [], expectError: false},
-        {input: new LinkedList<number>(), remove: 0, expectedResult: undefined, expectError: true},
-        {input: new LinkedList<number>().append(0), remove: 1, expectedResult: undefined, expectError: true},
-        {input: new LinkedList<number>().append(0), remove: -1, expectedResult: undefined, expectError: true},
+            {
+                input: new LinkedList<number>().append(0).append(1).append(2),
+                n: 2,
+                expectedResult: [1, 2],
+            },
+            {input: new LinkedList<number>().append(0), n: 0, expectedResult: []},
+            {input: new LinkedList<number>(), n: 0, expectError: true},
+            {input: new LinkedList<number>().append(0), n: 1, expectError: true},
+            {input: new LinkedList<number>().append(0), n: -1, expectError: true},
         ]
     ;[removeNthLast].forEach((fn) => {
         describe(fn, () => {
             testCases.forEach((tc) => {
                 it('should equal', () => {
+                    const testFn = () => fn(tc.input!, tc.n!)
                     if (tc.expectError) {
-                        expect(() => fn(tc.input, tc.remove)).toThrow()
+                        expect(testFn).toThrow()
                     } else {
-                        const result = fn(tc.input, tc.remove)
+                        const result = testFn()
                         const resultArray = result.toArray()
                         expect(resultArray).toEqual(tc.expectedResult)
                     }
